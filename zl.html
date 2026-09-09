@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document01</title>
+</head>
+<body>
+   
+ ```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Restaurant — Вкус каждый день</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #111;
+            color: white;
+        }
+
+        /* HEADER */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff9f1c;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff9f1c;
+        }
+
+        .cart {
+            background: #ff9f1c;
+            color: #111;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 50px;
+
+            background:
+                linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+                url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ff9f1c;
+        }
+
+        .hero p {
+            font-size: 21px;
+            color: #ddd;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff9f1c;
+            color: #111;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #ffb84d;
+        }
+
+        /* MENU */
+
+        .menu {
+            padding: 100px 7%;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .title h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #aaa;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .category {
+            padding: 11px 20px;
+            background: #222;
+            color: white;
+            border: 1px solid #333;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .category:hover,
+        .category.active {
+            background: #ff9f1c;
+            color: #111;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #1b1b1b;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: .3s;
+            border: 1px solid #292929;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #ff9f1c;
+        }
+
+        .card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price {
+            color: #ff9f1c;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .add {
+            background: #ff9f1c;
+            color: #111;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* ABOUT */
+
+        .about {
+            padding: 100px 7%;
+            background: #181818;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            padding: 100px 7%;
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 650px;
+            margin: auto;
+            background: #1b1b1b;
+            padding: 35px;
+            border-radius: 20px;
+        }
+
+        .contact-box h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            color: #bbb;
+            line-height: 2;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #080808;
+            padding: 30px;
+            text-align: center;
+            color: #777;
+        }
+
+        /* CART WINDOW */
+
+        .cart-window {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 370px;
+            height: 100vh;
+            background: #1a1a1a;
+            z-index: 2000;
+            padding: 30px;
+            transition: .4s;
+            box-shadow: -5px 0 30px rgba(0,0,0,.5);
+        }
+
+        .cart-window.open {
+            right: 0;
+        }
+
+        .cart-window h2 {
+            margin-bottom: 25px;
+        }
+
+        .cart-items {
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .total {
+            margin-top: 25px;
+            font-size: 22px;
+            color: #ff9f1c;
+            font-weight: bold;
+        }
+
+        .close-cart {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 700px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .menu {
+                padding: 70px 5%;
+            }
+
+            .cart-window {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        Food<span>House</span>
+    </div>
+
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#menu">Меню</a>
+        <a href="#about">О нас</a>
+        <a href="#contact">Контакты</a>
+    </nav>
+
+    <div class="cart" onclick="openCart()">
+        🛒 Корзина <span id="cartCount">0</span>
+    </div>
+</header>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            Вкус, который<br>
+            <span>хочется повторить</span>
+        </h1>
+
+        <p>
+            Свежие блюда, быстрая доставка и атмосфера,
+            ради которой хочется возвращаться снова.
+        </p>
+
+        <a href="#menu" class="btn">
+            Смотреть меню
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="menu" id="menu">
+
+    <div class="title">
+
+        <h2>Наше меню</h2>
+
+        <p>
+            Выбирайте любимые блюда
+        </p>
+
+    </div>
+
+
+    <div class="categories">
+
+        <button class="category active" onclick="filterMenu('all', this)">
+            Все
+        </button>
+
+        <button class="category" onclick="filterMenu('pizza', this)">
+            🍕 Пицца
+        </button>
+
+        <button class="category" onclick="filterMenu('burger', this)">
+            🍔 Бургеры
+        </button>
+
+        <button class="category" onclick="filterMenu('sushi', this)">
+            🍣 Суши
+        </button>
+
+        <button class="category" onclick="filterMenu('salad', this)">
+            🥗 Салаты
+        </button>
+
+        <button class="category" onclick="filterMenu('drink', this)">
+            🥤 Напитки
+        </button>
+
+        <button class="category" onclick="filterMenu('dessert', this)">
+            🍰 Десерты
+        </button>
+
+    </div>
+
+
+    <div class="products">
+
+        <div class="card" data-category="pizza">
+            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-content">
+
+                <h3>Пицца Пепперони</h3>
+
+                <p>
+                    Томатный соус, моцарелла,
+                    пепперони и свежая зелень.
+                </p>
+
+                <div class="bottom">
+
+                    <span class="price">450 сом</span>
+
+                    <button class="add"
+                        onclick="addToCart('Пицца Пепперони',450)">
+                        + Добавить
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="card" data-category="pizza">
+
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-content">
+
+                <h3>Пицца Маргарита</h3>
+
+                <p>
+                    Моцарелла, томаты,
+                    базилик и фирменный соус.
+                </p>
+
+                <div class="bottom">
+
+                    <span class="price">390 сом</span>
+
+                    <button class="add"
+                        onclick="addToCart('Пицца Маргарита',390)">
+                        + Добавить
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="card" data-category="burger">
+
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-content">
+
+                <h3>Classic Burger</h3>
+
+                <p>
+                    Сочная говяжья котлета,
+                    сыр, салат и фирменный соус.
+                </p>
+
+                <div class="bottom">
+
+                    <span class="price">420 сом</span>
+
+                    <button class="add"
+                        onclick="addToCart('Classic Burger',420)">
+                        + Добавить
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="card" data-category="burger">
+
+            <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-content">
+
+                <h3>Cheese Burger</h3>
+
+                <p>
+                    Двойной сыр, говядина,
+                    лук и фирменный соус.
+                </p>
+
+                <div class="bottom">
+
+                    <span class="price">490 сом</span>
+
+                    <button class="add"
+                        onclick="addToCart('Cheese Burger',490)">
+                        + Добавить
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="card" data-category="sushi">
+
+            <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-content">
+
+                <h3>Сет Филадельфия</h3>
+
+                <p>
+                    Лосось, сливочный сыр,
+                    рис и нори.
+                </p>
+
+                <div class="bottom">
+
+                    <span class="price">850 сом</span>
+
+                    <button class="add"
+                        onclick="addToCart('Сет Филадельфия',850)">
+                        + Добавить
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="card" data-category="sushi">
+
+            <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-content">
+
+                <h3>Суши Сет</h3>
+
+                <p>
+                    Ассорти роллов для
+                    большой компании.
+                </p>
+
+                <div class="bottom">
+
+                    <span class="price">990 сом</span>
+
+                    <button class="add"
+                        onclick="addToCart('Суши Сет',990)">
+                        + Добавить
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="card" data-category="salad">
+
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-content">
+
+                <h3>Свежий салат</h3>
+
+                <p>
+                    Овощи, зелень, сыр
+                    и лёгкая заправка.
+                </p>
+
+                <div class="bottom">
+
+                    <span class="price">280 сом</span>
+
+                    <button class="add"
+                        onclick="addToCart('Свежий салат',280)">
+                        + Добавить
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="card" data-category="drink">
+
+            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-content">
+
+                <h3>Лимонад</h3>
+
+                <p>
+                    Домашний лимонад
+                    с лимоном и мятой.
+                </p>
+
+                <div class="bottom">
+
+                    <span class="price">180 сом</span>
+
+                    <button class="add"
+                        onclick="addToCart('Лимонад',180)">
+                        + Добавить
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="card" data-category="dessert">
+
+            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-content">
+
+                <h3>Чизкейк</h3>
+
+                <p>
+                    Нежный сливочный чизкейк
+                    с ягодным соусом.
+                </p>
+
+                <div class="bottom">
+
+                    <span class="price">250 сом</span>
+
+                    <button class="add"
+                        onclick="addToCart('Чизкейк',250)">
+                        + Добавить
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="about" id="about">
+
+    <h2>Почему выбирают нас?</h2>
+
+    <p>
+        FoodHouse — место, где качественные продукты,
+        профессиональные повара и современная подача
+        объединяются в одном ресторане.
+        Заказывайте любимые блюда онлайн или приходите
+        к нам всей семьёй.
+    </p>
+
+</section>
+
+
+<section class="contact" id="contact">
+
+    <div class="contact-box">
+
+        <h2>Свяжитесь с нами</h2>
+
+        <div class="contact-info">
+
+            📍 Бишкек, Кыргызстан<br>
+
+            📞 +996 227 070 029<br>
+
+            📧 info@foodhouse.kg<br>
+
+            🕐 Каждый день: 10:00 — 23:00
+
+        </div>
+
+        <br>
+
+        <button class="btn"
+            onclick="alert('Спасибо! Мы скоро свяжемся с вами.')">
+            Заказать столик
+        </button>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 FoodHouse — Все права защищены
+
+</footer>
+
+
+<!-- CART -->
+
+<div class="cart-window" id="cartWindow">
+
+    <div class="close-cart" onclick="closeCart()">
+        ✕
+    </div>
+
+    <h2>🛒 Ваша корзина</h2>
+
+    <div class="cart-items" id="cartItems">
+
+        <p style="color:#888">
+            Корзина пока пустая
+        </p>
+
+    </div>
+
+    <div class="total">
+        Итого: <span id="total">0</span> сом
+    </div>
+
+    <br>
+
+    <button class="btn" onclick="order()">
+        Оформить заказ
+    </button>
+
+</div>
+
+
+<script>
+
+    let cart = [];
+    let total = 0;
+
+
+    function addToCart(name, price) {
+
+        cart.push({
+            name: name,
+            price: price
+        });
+
+        total += price;
+
+        updateCart();
+
+        alert(name + " добавлено в корзину!");
+
+    }
+
+
+    function updateCart() {
+
+        document.getElementById("cartCount").innerText =
+            cart.length;
+
+        document.getElementById("total").innerText =
+            total;
+
+
+        let container =
+            document.getElementById("cartItems");
+
+
+        if (cart.length === 0) {
+
+            container.innerHTML =
+                '<p style="color:#888">Корзина пока пустая</p>';
+
+            return;
+
+        }
+
+
+        container.innerHTML = "";
+
+
+        cart.forEach((item, index) => {
+
+            container.innerHTML += `
+
+                <div class="cart-item">
+
+                    <b>${item.name}</b>
+
+                    <br>
+
+                    <span style="color:#ff9f1c">
+                        ${item.price} сом
+                    </span>
+
+                    <button
+                        onclick="removeItem(${index})"
+                        style="
+                        float:right;
+                        background:none;
+                        color:#ff5555;
+                        border:none;
+                        cursor:pointer;
+                        ">
+                        Удалить
+                    </button>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+
+    function removeItem(index) {
+
+        total -= cart[index].price;
+
+        cart.splice(index, 1);
+
+        updateCart();
+
+    }
+
+
+    function openCart() {
+
+        document
+            .getElementById("cartWindow")
+            .classList.add("open");
+
+    }
+
+
+    function closeCart() {
+
+        document
+            .getElementById("cartWindow")
+            .classList.remove("open");
+
+    }
+
+
+    function order() {
+
+        if (cart.length === 0) {
+
+            alert("Сначала добавьте блюда в корзину!");
+
+            return;
+
+        }
+
+
+        alert(
+            "Спасибо за заказ! " +
+            "С вами свяжется наш оператор."
+        );
+
+    }
+
+
+    function filterMenu(category, button) {
+
+        document
+            .querySelectorAll(".category")
+            .forEach(btn => btn.classList.remove("active"));
+
+
+        button.classList.add("active");
+
+
+        document
+            .querySelectorAll(".card")
+            .forEach(card => {
+
+                if (
+                    category === "all" ||
+                    card.dataset.category === category
+                ) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+    }
+
+</script>
+
+</body>
+</html>
+```
+   
+
+
+</body>
+</html></html>
