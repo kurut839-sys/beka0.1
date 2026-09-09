@@ -1,20 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document01</title>
-</head>
-<body>
-   
- ```html
-<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Restaurant — Вкус каждый день</title>
+    <title>FoodHouse — Вкус каждый день</title>
 
     <style>
         * {
@@ -296,7 +286,7 @@
             color: #777;
         }
 
-        /* CART WINDOW */
+        /* CART */
 
         .cart-window {
             position: fixed;
@@ -378,6 +368,7 @@
 <body>
 
 <header>
+
     <div class="logo">
         Food<span>House</span>
     </div>
@@ -392,6 +383,7 @@
     <div class="cart" onclick="openCart()">
         🛒 Корзина <span id="cartCount">0</span>
     </div>
+
 </header>
 
 
@@ -433,31 +425,38 @@
 
     <div class="categories">
 
-        <button class="category active" onclick="filterMenu('all', this)">
+        <button class="category active"
+                onclick="filterMenu('all', this)">
             Все
         </button>
 
-        <button class="category" onclick="filterMenu('pizza', this)">
+        <button class="category"
+                onclick="filterMenu('pizza', this)">
             🍕 Пицца
         </button>
 
-        <button class="category" onclick="filterMenu('burger', this)">
+        <button class="category"
+                onclick="filterMenu('burger', this)">
             🍔 Бургеры
         </button>
 
-        <button class="category" onclick="filterMenu('sushi', this)">
+        <button class="category"
+                onclick="filterMenu('sushi', this)">
             🍣 Суши
         </button>
 
-        <button class="category" onclick="filterMenu('salad', this)">
+        <button class="category"
+                onclick="filterMenu('salad', this)">
             🥗 Салаты
         </button>
 
-        <button class="category" onclick="filterMenu('drink', this)">
+        <button class="category"
+                onclick="filterMenu('drink', this)">
             🥤 Напитки
         </button>
 
-        <button class="category" onclick="filterMenu('dessert', this)">
+        <button class="category"
+                onclick="filterMenu('dessert', this)">
             🍰 Десерты
         </button>
 
@@ -466,7 +465,9 @@
 
     <div class="products">
 
+
         <div class="card" data-category="pizza">
+
             <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80">
 
             <div class="card-content">
@@ -483,7 +484,7 @@
                     <span class="price">450 сом</span>
 
                     <button class="add"
-                        onclick="addToCart('Пицца Пепперони',450)">
+                            onclick="addToCart('Пицца Пепперони',450)">
                         + Добавить
                     </button>
 
@@ -511,7 +512,7 @@
                     <span class="price">390 сом</span>
 
                     <button class="add"
-                        onclick="addToCart('Пицца Маргарита',390)">
+                            onclick="addToCart('Пицца Маргарита',390)">
                         + Добавить
                     </button>
 
@@ -539,7 +540,7 @@
                     <span class="price">420 сом</span>
 
                     <button class="add"
-                        onclick="addToCart('Classic Burger',420)">
+                            onclick="addToCart('Classic Burger',420)">
                         + Добавить
                     </button>
 
@@ -567,7 +568,7 @@
                     <span class="price">490 сом</span>
 
                     <button class="add"
-                        onclick="addToCart('Cheese Burger',490)">
+                            onclick="addToCart('Cheese Burger',490)">
                         + Добавить
                     </button>
 
@@ -595,7 +596,7 @@
                     <span class="price">850 сом</span>
 
                     <button class="add"
-                        onclick="addToCart('Сет Филадельфия',850)">
+                            onclick="addToCart('Сет Филадельфия',850)">
                         + Добавить
                     </button>
 
@@ -623,7 +624,7 @@
                     <span class="price">990 сом</span>
 
                     <button class="add"
-                        onclick="addToCart('Суши Сет',990)">
+                            onclick="addToCart('Суши Сет',990)">
                         + Добавить
                     </button>
 
@@ -651,7 +652,7 @@
                     <span class="price">280 сом</span>
 
                     <button class="add"
-                        onclick="addToCart('Свежий салат',280)">
+                            onclick="addToCart('Свежий салат',280)">
                         + Добавить
                     </button>
 
@@ -679,7 +680,7 @@
                     <span class="price">180 сом</span>
 
                     <button class="add"
-                        onclick="addToCart('Лимонад',180)">
+                            onclick="addToCart('Лимонад',180)">
                         + Добавить
                     </button>
 
@@ -707,7 +708,7 @@
                     <span class="price">250 сом</span>
 
                     <button class="add"
-                        onclick="addToCart('Чизкейк',250)">
+                            onclick="addToCart('Чизкейк',250)">
                         + Добавить
                     </button>
 
@@ -745,19 +746,15 @@
         <div class="contact-info">
 
             📍 Бишкек, Кыргызстан<br>
-
             📞 +996 227 070 029<br>
-
             📧 info@foodhouse.kg<br>
-
             🕐 Каждый день: 10:00 — 23:00
 
         </div>
 
         <br>
 
-        <button class="btn"
-            onclick="alert('Спасибо! Мы скоро свяжемся с вами.')">
+        <button class="btn" onclick="orderTable()">
             Заказать столик
         </button>
 
@@ -767,9 +764,7 @@
 
 
 <footer>
-
     © 2026 FoodHouse — Все права защищены
-
 </footer>
 
 
@@ -821,8 +816,6 @@
 
         updateCart();
 
-        alert(name + " добавлено в корзину!");
-
     }
 
 
@@ -834,7 +827,6 @@
         document.getElementById("total").innerText =
             total;
 
-
         let container =
             document.getElementById("cartItems");
 
@@ -845,7 +837,6 @@
                 '<p style="color:#888">Корзина пока пустая</p>';
 
             return;
-
         }
 
 
@@ -869,11 +860,11 @@
                     <button
                         onclick="removeItem(${index})"
                         style="
-                        float:right;
-                        background:none;
-                        color:#ff5555;
-                        border:none;
-                        cursor:pointer;
+                            float:right;
+                            background:none;
+                            color:#ff5555;
+                            border:none;
+                            cursor:pointer;
                         ">
                         Удалить
                     </button>
@@ -923,9 +914,7 @@
             alert("Сначала добавьте блюда в корзину!");
 
             return;
-
         }
-
 
         alert(
             "Спасибо за заказ! " +
@@ -935,11 +924,22 @@
     }
 
 
+    function orderTable() {
+
+        alert(
+            "Спасибо! Мы скоро свяжемся с вами для подтверждения столика."
+        );
+
+    }
+
+
     function filterMenu(category, button) {
 
         document
             .querySelectorAll(".category")
-            .forEach(btn => btn.classList.remove("active"));
+            .forEach(btn =>
+                btn.classList.remove("active")
+            );
 
 
         button.classList.add("active");
@@ -970,10 +970,3 @@
 
 </body>
 </html>
-```
-   
-
-
-</body>
-</html></html>
-
